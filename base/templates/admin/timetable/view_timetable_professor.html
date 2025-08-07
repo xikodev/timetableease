@@ -1,0 +1,30 @@
+{% extends 'layout_base.html' %}
+{% block base %}
+<script>
+    putBackBtn('home');
+</script>
+<form method="POST" action="">
+    {% csrf_token %}
+    <div>
+        <h3>Pregled rasporeda po profesoru</h3>
+        <fieldset>
+            <legend><label for="select_professor">Odabir profesora</label></legend>
+            <select name="select_professor" id="select_professor" required>
+                <option value="blank"></option>
+                {% for professor in professors %}
+                    {% if professor.id == selected_professor %}
+                        <option value="{{ professor.id }}" selected>{{ professor.get_full_name }}</option>
+                    {% else %}
+                        <option value="{{ professor.id }}">{{ professor.get_full_name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </fieldset>
+    </div>
+    <button type="submit" name="view_timetable_professor">Odabir profesora</button>
+    <a class="shift" href="{% url 'view_timetable_professor_select' shift='b'%}">B</a>
+    <a class="shift" href="{% url 'view_timetable_professor_select' shift='a'%}">A</a>
+</form>
+{% block view %}
+{% endblock %}
+{% endblock %}

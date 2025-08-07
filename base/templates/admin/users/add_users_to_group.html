@@ -1,0 +1,31 @@
+{% extends 'layout_base.html' %}
+{% block base %}
+<script>
+    putBackBtn('home');
+</script>
+<form method="POST" action="">
+    {% csrf_token %}
+    <div>
+        <h3>Dodavanje korisnika u grupe/razrede</h3>
+        <fieldset>
+            <legend><label for="class">Grupa/razred</label></legend>
+            <select name="class" id="class" required>
+                <option value="blank"></option>
+                {% for class in classes %}
+                    <option value="{{ class.id }}">{{ class.name }}</option>
+                {% endfor %}
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend><label>Korisnici</label></legend>
+            <div class="users">
+                {% for user in users %}
+                    <input type="checkbox" id="{{ user }}" name="{{ user }}" value="{{ user.id }}">
+                    <label for="{{ user }}">{{ user.get_full_name }}</label><br>
+                {% endfor %}
+            </div>
+        </fieldset>
+        <input type="submit" name="add_users_to_group">
+    </div>
+</form>
+{% endblock %}

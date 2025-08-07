@@ -1,0 +1,30 @@
+{% extends 'layout_base.html' %}
+{% block base %}
+<script>
+    putBackBtn('home');
+</script>
+<form method="POST" action="">
+    {% csrf_token %}
+    <div class="container">
+        <h3>Zahtjev za zamjenu predmeta</h3>
+        <fieldset>
+            <legend><label for="change_date">Datum zamjene:</label></legend>
+            <input id="change_date" type="date" name="change_date" required>
+        </fieldset>
+        <fieldset>
+            <legend><label for="shift">Smjena</label></legend>
+            <select name="shift" id="shift" required>
+                <option value="blank"></option>
+                {% for shift in shifts %}
+                    <option value="{{ shift.id }}">{{ shift.shift }}</option>
+                {% endfor %}
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend><label for="class_number">Redni broj sata:</label></legend>
+            <input id="class_number" type="number" min="1" max="10" name="class_number" required>
+        </fieldset>
+        <input type="submit" name="request_change">
+    </div>
+</form>
+{% endblock %}

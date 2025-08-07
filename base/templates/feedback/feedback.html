@@ -1,0 +1,30 @@
+{% extends 'layout_base.html' %}
+{% block base %}
+<script>
+    putBackBtn('home');
+</script>
+<form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <h3>Povratne informacije</h3>
+        <fieldset>
+            <legend><label for="feedback_subject">Predmet</label></legend>
+            <select name="feedback_subject" id="feedback_subject" required>
+                <option value="blank"></option>
+                {% for feedback_subject in feedback_subjects %}
+                    <option value="{{ feedback_subject }}">{{ feedback_subject }}</option>
+                {% endfor %}
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend><label for="feedback_comment">Komentar</label></legend>
+            <textarea name="feedback_comment" rows="20" maxlength="1000" id="feedback_comment" required></textarea>
+        </fieldset>
+        <fieldset>
+            <legend><label for="feedback_file">Dodatno</label></legend>
+            <input type="file" name="feedback_file" id="feedback_file" accept=".jpg,.jpeg,.jfif,.pjpeg,.pjp,.png,.gif,.svg,.webp">
+        </fieldset>
+        <input type="submit" name="send_feedback">
+    </div>
+</form>
+{% endblock %}

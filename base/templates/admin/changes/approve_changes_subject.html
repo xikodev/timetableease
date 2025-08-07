@@ -1,0 +1,32 @@
+{% extends 'layout_base.html' %}
+{% block base %}
+<script>
+    putBackBtn('home');
+</script>
+<form method="POST" action="">
+    {% csrf_token %}
+    <div>
+        <h3>Zahtjev za zamjenu predmeta</h3>
+        <fieldset>
+            <legend>Zahtjevi</legend>
+            <div class="users">
+                {% for change in changes %}
+                    <label>
+                        <input type="radio" name="change" value="{{ change }}">{{ change }}
+                    </label><br>
+                {% endfor %}
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend><label for="subject">Zamjena</label></legend>
+            <select name="subject" id="subject" required>
+                <option value="blank"></option>
+                {% for subject in subjects %}
+                    <option value="{{ subject.id }}">{{ subject.long_name }}</option>
+                {% endfor %}
+            </select>
+        </fieldset>
+        <input type="submit" name="approve_changes_subject">
+    </div>
+</form>
+{% endblock %}

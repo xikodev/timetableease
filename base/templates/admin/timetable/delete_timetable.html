@@ -1,0 +1,22 @@
+{% extends 'layout_base.html' %}
+{% block base %}
+<script>
+    putBackBtn('home');
+</script>
+<form method="POST" action="">
+    {% csrf_token %}
+    <div>
+        <h3>Brisanje rasporeda</h3>
+        <fieldset>
+            <legend><label for="class">Razred</label></legend>
+            <select name="class" id="class" required>
+                <option value="blank"></option>
+                {% for class in classes %}
+                    <option value="{{ class.id }}">{{ class.name }}</option>
+                {% endfor %}
+            </select>
+        </fieldset>
+        <input type="submit" name="delete_timetable">
+    </div>
+</form>
+{% endblock %}

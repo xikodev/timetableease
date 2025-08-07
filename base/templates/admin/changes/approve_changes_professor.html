@@ -1,0 +1,32 @@
+{% extends 'layout_base.html' %}
+{% block base %}
+<script>
+    putBackBtn('home');
+</script>
+<form method="POST" action="">
+    {% csrf_token %}
+    <div>
+        <h3>Zahtjev za zamjenu profesora</h3>
+        <fieldset>
+            <legend>Zahtjevi</legend>
+            <div class="users">
+                {% for change in changes %}
+                    <label>
+                        <input type="radio" name="change" value="{{ change }}">{{ change }}
+                    </label><br>
+                {% endfor %}
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend><label for="professor">Zamjena</label></legend>
+            <select name="professor" id="professor" required>
+                <option value="blank"></option>
+                {% for professor in professors %}
+                    <option value="{{ professor.id }}">{{ professor.get_full_name }}</option>
+                {% endfor %}
+            </select>
+        </fieldset>
+        <input type="submit" name="approve_changes_professor">
+    </div>
+</form>
+{% endblock %}

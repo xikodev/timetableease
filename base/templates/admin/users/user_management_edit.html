@@ -1,0 +1,25 @@
+{% extends 'layout_base.html' %}
+{% block base %}
+<script>
+    putBackBtn('home');
+</script>
+<form method="POST" action="">
+    {% csrf_token %}
+    <div>
+        <h3>Uredivanje korisnika {{ user.username }}</h3>
+        <fieldset>
+            <legend><label for="first_name">Ime</label></legend>
+            <input id="first_name" type="text" name="first_name" value="{{ user.first_name }}">
+        </fieldset>
+        <fieldset>
+            <legend><label for="email">Prezime</label></legend>
+            <input id="last_name" type="text" name="last_name" value="{{ user.last_name }}">
+        </fieldset>
+        <fieldset>
+            <legend><label for="email">E-mail</label></legend>
+            <input id="email" type="email" name="email" value="{{ user.email }}" required>
+        </fieldset>
+        <input type="submit" name="user_management_edit">
+    </div>
+</form>
+{% endblock %}

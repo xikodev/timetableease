@@ -1,0 +1,70 @@
+{% extends 'layout_base.html' %}
+{% block base %}
+<script>
+    putBackBtn('home');
+</script>
+<form method="POST" action="">
+    {% csrf_token %}
+    <div>
+        <h3>Dodavanje vremena</h3>
+        <fieldset>
+            <legend><label for="class_number">Broj školskih sata</label></legend>
+            <input id="class_number" type="number" min="1" max="10" name="class_number" required>
+        </fieldset>
+        <fieldset>
+            <legend><label for="shift">Smjena</label></legend>
+            <select name="shift" id="shift" required>
+                <option value="blank"></option>
+                {% for shift in shifts %}
+                    <option value="{{ shift.id }}">{{ shift.shift }}</option>
+                {% endfor %}
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend><label>Vrijeme početka škole</label></legend>
+            <select name="start_time_h_class" required>
+                <option value="blank"></option>
+                {% for hour in hours %}
+                    <option value="{{ hour.id }}">{{ hour.hour}}</option>
+                {% endfor %}
+            </select>
+            :
+            <select name="start_time_m_class" required>
+                <option value="blank"></option>
+                {% for minute in minutes %}
+                    <option value="{{ minute.id }}">{{ minute.minute }}</option>
+                {% endfor %}
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend><label>Vrijeme početka velikog odmora</label></legend>
+            <select name="start_time_h_pause" required>
+                <option value="blank"></option>
+                {% for hour in hours %}
+                    <option value="{{ hour.id }}">{{ hour.hour }}</option>
+                {% endfor %}
+            </select>
+            :
+            <select name="start_time_m_pause" required>
+                <option value="blank"></option>
+                {% for minute in minutes %}
+                    <option value="{{ minute.id }}">{{ minute.minute }}</option>
+                {% endfor %}
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend><label for="class_duration">Trajanje školskog sata</label></legend>
+            <input id="class_duration" type="number" min="5" max="120" name="class_duration" required> minuta
+        </fieldset>
+        <fieldset>
+            <legend><label for="small_pause_duration">Trajanje malog odmora</label></legend>
+            <input id="small_pause_duration" type="number" min="5" max="120" name="small_pause_duration" required> minuta
+        </fieldset>
+        <fieldset>
+            <legend><label for="big_pause_duration">Trajanje velikog odmora</label></legend>
+            <input id="big_pause_duration" type="number" min="5" max="120" name="big_pause_duration" required> minuta
+        </fieldset>
+        <input type="submit" name="create_time">
+    </div>
+</form>
+{% endblock %}

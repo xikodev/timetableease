@@ -1,0 +1,61 @@
+{% extends 'admin/timetable/edit_timetable.html' %}
+{% block edit %}
+<table class="timetable">
+    <tr>
+        <th>{{ shift }}</th>
+        {% for day in days %}
+            <th>{{ day }}</th>
+        {% endfor %}
+    </tr>
+    {% for row in timetable %}
+        <tr>
+            {% for element in row %}
+                <!--
+                for day in days
+                for time in times
+                if element.day == day and element.time == time
+                -->
+                            {% if element.time in times %}
+                                <td>{{ element.time }}</td>
+                            {% else %}
+                                <td>
+                                    <select name="{{ element.time }} | {{ element.day }} | professor">
+                                        <option value="blank"></option>
+                                        {% for professor in professors %}
+                                            {% if professor.id == element.user.id %}
+                                                <option value="{{ professor.id }}" selected>{{ professor.get_full_name }}</option>
+                                            {% else %}
+                                                <option value="{{ professor.id }}">{{ professor.get_full_name }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+
+                                    <select name="{{ element.time }} | {{ element.day }} | subject">
+                                        <option value="blank"></option>
+                                        {% for subject in subjects %}
+                                            {% if subject.id == element.subject.id %}
+                                                <option value="{{ subject.id }}" selected>{{ subject.short_name }}</option>
+                                            {% else %}
+                                                <option value="{{ subject.id }}">{{ subject.short_name }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+
+                                    <select name="{{ element.time }} | {{ element.day }} | room">
+                                        <option value="blank"></option>
+                                        {% for room in rooms %}
+                                            {% if room.id == element.room.id %}
+                                                <option value="{{ room.id }}" selected>Soba: {{ room.room }}</option>
+                                            {% else %}
+                                                <option value="{{ room.id }}">Soba: {{ room.room }}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                            {% endif %}
+            {% endfor %}
+        </tr>
+    {% endfor %}
+</table>
+<input type="submit" name="edit_timetable_select">
+{% endblock %}

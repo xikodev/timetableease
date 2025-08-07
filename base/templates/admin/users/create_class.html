@@ -1,0 +1,17 @@
+{% extends 'layout_base.html' %}
+{% block base %}
+<script>
+    putBackBtn('home');
+</script>
+<form method="POST" action="">
+    {% csrf_token %}
+    <div>
+        <h3>Izrada grupa/razreda</h3>
+        <fieldset>
+            <legend><label for="class">Ime grupe/razreda</label></legend>
+            <input id="class" type="text" name="class">
+        </fieldset>
+        <input type="submit" name="create_class">
+    </div>
+</form>
+{% endblock %}

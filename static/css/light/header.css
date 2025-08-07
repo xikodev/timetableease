@@ -1,0 +1,140 @@
+header {
+    overflow: hidden;
+    background-color: #3D36FF;
+    color: #fff;
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+}
+
+header .main-dropdown, header #title, header #buttons {
+    padding: 0 5%;
+}
+
+header hr {
+    width: calc(100% - 4px);
+    padding: 0;
+    margin: 0;
+    border: 2px solid #000;
+}
+
+#title {
+    margin-left: 50px;
+}
+
+#title h1 {
+    float: right;
+}
+
+#title img {
+    padding-top: 10px;
+    float: left;
+    aspect-ratio: auto;
+    width: 30px;
+}
+
+header .shift {
+    margin-top: 7px;
+}
+
+.shift {
+    cursor: pointer;
+    float: right;
+    border: 3px solid #000;
+    border-radius: 10px;
+    margin-left: 10px;
+    padding: 10px;
+    color: #000;
+    background-color: #fff;
+    text-decoration: none;
+}
+
+.shift:hover {
+    background-color: #00AAFF;
+}
+
+#back {
+    filter: invert();
+    cursor: pointer;
+    padding: 10px;
+    float: right;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+}
+
+#back img {
+    width: 20px;
+    padding-top: 10px;
+    margin: 0;
+}
+
+#dropdown-menu {
+    position: absolute;
+    float: left;
+    overflow: hidden;
+    margin: 7px;
+    padding: 20px;
+    background-image: url('/static/images/bars-solid.png');
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: center;
+    filter: invert();
+}
+
+.dropdown {
+    overflow: hidden;
+}
+
+.dropbtn {
+    border: 1px solid #3D36FF;
+}
+
+.dropdown .dropbtn {
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    background-color: #00000000;
+}
+
+#main-dropdown {
+    margin-top: 50px;
+}
+
+.dropdown-content {
+    display: none;
+    position: fixed;
+    min-width: 150px;
+    border: 2px solid #000;
+    z-index: 1;
+}
+
+.dropdown-content a, .dropdown-content p, .dropdown-content button {
+    color: #fff;
+    background-color: #3D36FF;
+    padding: 12px 16px;
+    margin: 0;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    border: 1px solid #000;
+}
+
+.dropdown-content a:hover, .dropdown-content button:hover {
+    background-color: #00AAFF;
+}
+
+.dropdown-content .icon {
+    width: 20px;
+    padding-right: 10px;
+    vertical-align: middle;
+    filter: invert();
+}
+
+.show {
+    display: block;
+}
+
+#title {
+    float: left;
+}

@@ -1,0 +1,45 @@
+#settings {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10%;
+}
+
+#settings a {
+    background-color: #3D36FF;
+}
+
+#settings a:hover {
+    background-color: #00AAFF;
+}
+
+#settings fieldset {
+    background: linear-gradient(90deg, #3D36FF 45%, #b65737 55%);
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#settings fieldset, #settings a {
+    text-align: center;
+    width: 250px;
+    margin: 10px;
+    color: #fff;
+    border: 2px solid #f0f2ff;
+    border-radius: 10px;
+    padding: 5px;
+    text-decoration: none;
+}
+
+#settings fieldset button {
+    border: none;
+    color: #fff;
+    background-color: #00000000;
+    width: 50%;
+}
+
+#settings fieldset:hover {
+    background: linear-gradient(90deg, #00AAFF 45%, #c3765b 55%);
+}

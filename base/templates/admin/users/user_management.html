@@ -1,0 +1,23 @@
+{% extends 'layout_base.html' %}
+{% block base %}
+<script>
+    putBackBtn('home');
+</script>
+<form method="POST" action="">
+    {% csrf_token %}
+    <div>
+        <h3>Upravljanje korisnicima</h3>
+        <fieldset>
+            <legend><label>Korisnici</label></legend>
+            <div class="users">
+                {% for user in users %}
+                    <input type="radio" id="{{ user }}" name="user" value="{{ user.id }}">
+                    <label class="select-label" for="{{ user }}">{{ user.get_full_name }}</label><br>
+                {% endfor %}
+            </div>
+        </fieldset>
+        <button type="submit" name="edit_user" value="1">Uredivanje korisnika</button>
+        <button type="submit" name="delete_user" value="1">Brisanje korisnika</button>
+    </div>
+</form>
+{% endblock %}

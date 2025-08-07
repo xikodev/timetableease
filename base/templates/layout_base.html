@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link id="css_style" href="{% static 'css/dark/style.css' %}" rel="stylesheet" type="text/css">
+    <link id="css_header" href="{% static 'css/dark/header.css' %}" rel="stylesheet" type="text/css">
+    <link id="css_navbar" href="{% static 'css/dark/navbar.css' %}" rel="stylesheet" type="text/css">
+    <link id="css_table" href="{% static 'css/dark/table.css' %}" rel="stylesheet" type="text/css">
+    <link id="css_form" href="{% static 'css/dark/form.css' %}" rel="stylesheet" type="text/css">
+    <link id="css_settings" href="{% static 'css/dark/settings.css' %}" rel="stylesheet" type="text/css">
+
+    <script src="{% static 'scripts/theme.js' %}" type="text/javascript"></script>
+    <script src="{% static 'scripts/dropdown.js' %}" type="text/javascript"></script>
+    <script src="{% static 'scripts/buttons.js' %}" type="text/javascript"></script>
+    <script src="{% static 'scripts/stats.js' %}" type="text/javascript"></script>
+
+    <link href="{% static 'images/logo.png' %}" rel="icon" type="image/png">
+    <title>Raspored sati</title>
+</head>
+<body>
+    <header>
+        {% if request.user.is_authenticated %}
+            <div class="main-dropdown dropdown">
+                <button id="dropdown-menu" class="dropbtn" onclick="dropdownFunction('main-dropdown')"></button>
+                <div class="dropdown-content" id="main-dropdown">
+                    {% if professor %}
+                        <a href="{% url 'changes_professor' %}">
+                            <img class="icon" src="{% static 'images/users-solid.png' %}" alt="">Zamjena profesora
+                        </a>
+                        <a href="{% url 'changes_subject' %}">
+                            <img class="icon" src="{% static 'images/users-solid.png' %}" alt="">Zamjena predmeta
+                        </a>
+                    {% endif %}
+                    <a href="{% url 'settings' %}">
+                        <img class="icon" src="{% static 'images/gear-solid.png' %}" alt="">Postavke
+                    </a>
+                    <a href="{% url 'feedback' %}">
+                        <img class="icon" src="{% static 'images/paper-plane-solid.png' %}" alt="">Kontakt
+                    </a>
+                    <a href="{% static 'docs/documentation.pdf' %}" target="_blank">
+                        <img class="icon" src="{% static 'images/circle-info-solid.png' %}" alt="">Docs
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+        <div id="title">
+            <img src="{% static 'images/logo.png' %}" alt="R">
+            <h1>ASPORED</h1>
+        </div>
+        <div id="buttons"></div>
+        <hr>
+        {% if request.user.is_superuser %}
+            <nav>
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="dropdownFunction('users-menu')">Korisnici</button>
+                    <div class="dropdown-content" id="users-menu">
+                        <a href="{% url 'user_management' %}">Upravljanje korisnicima</a>
+                        <a href="{% url 'create_class' %}">Izrada grupa/razreda</a>
+                        <a href="{% url 'add_users_to_group' %}">Pridruzivanje grupama/razredima</a>
+                        <a href="{% url 'stats' %}">Statistika profesora</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="dropdownFunction('timetable-menu')">Raspored</button>
+                    <div class="dropdown-content" id="timetable-menu">
+                        <a href="{% url 'view_timetable_class' %}">Pregled rasporeda po razredu</a>
+                        <a href="{% url 'view_timetable_professor' %}">Pregled rasporeda po profesoru</a>
+                        <a href="{% url 'create_time' %}">Izrada sati</a>
+                        <a href="{% url 'create_timetable' %}">Izrada rasporeda</a>
+                        <a href="{% url 'edit_timetable' %}">Izmjena rasporeda</a>
+                        <a href="{% url 'delete_timetable' %}">Brisanje rasporeda</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="dropdownFunction('approve-changes-menu')">Zamjene</button>
+                    <div class="dropdown-content" id="approve-changes-menu">
+                        <a href="{% url 'approve_changes_professor' %}">Zahtjevi za zamjenu profesora</a>
+                        <a href="{% url 'approve_changes_subject' %}">Zahtjevi za zamjenu predmeta</a>
+                    </div>
+                </div>
+            </nav>
+        {% endif %}
+    </header>
+    <main>
+        <div class="container">
+            {% block base %}
+            {% endblock %}
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends 'layout_base.html' %}
+{% block base %}
+<script>
+    putBackBtn('home');
+</script>
+<form method="POST" action="">
+    {% csrf_token %}
+    <div>
+        <h3>Statistika profesora</h3>
+        <fieldset>
+            <legend><label for="professor">Profesor</label></legend>
+            <select name="professor" id="professor">
+                <option value="blank"></option>
+                {% for professor in professors %}
+                    <option value="{{ professor.id }}">{{ professor.get_full_name }}</option>
+                {% endfor %}
+            </select>
+        </fieldset>
+        <button type="button" onclick="showStats()" name="stats">Prikaz statistike</button>
+        <fieldset>
+            <legend>Statistika</legend>
+            <p id="professor-stats"></p>
+        </fieldset>
+    </div>
+</form>
+{% endblock %}

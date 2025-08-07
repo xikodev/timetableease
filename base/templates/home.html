@@ -1,0 +1,16 @@
+{% extends 'layout_base.html' %}
+{% block base %}
+{% if request.user.is_authenticated and not request.user.is_superuser %}
+    <script>
+        putShiftBtn();
+    </script>
+{% endif %}
+{% if not request.user.is_superuser %}
+    <div class="container">
+        <div>
+            {% block timetable %}
+            {% endblock %}
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'layout_base.html' %}
+{% block base %}
+<script>
+    putBackBtn('home');
+</script>
+<form method="POST" action="">
+    {% csrf_token %}
+    <div>
+        <h3>Izrada rasporeda</h3>
+        <fieldset>
+            <legend><label for="class">Razred</label></legend>
+            <select name="class" id="class" required>
+                <option value="blank"></option>
+                {% for class in classes %}
+                    <option value="{{ class.id }}">{{ class.name }}</option>
+                {% endfor %}
+            </select>
+        </fieldset>
+        <table class="timetable">
+            <tr>
+                <th>
+                    <select name="shift" required>
+                        <option value="blank"></option>
+                        {% for shift in shifts %}
+                            <option value="{{ shift.id }}">{{ shift.shift }}</option>
+                        {% endfor %}
+                    </select>
+                </th>
+                {% for day in days %}
+                    <th>{{ day }}</th>
+                {% endfor %}
+            </tr>
+            {% for time in times %}
+                <tr>
+                    <td>{{ time.time }}</td>
+                    {% for day in days %}
+                        <td>
+                            <select name="{{ time }} | {{ day }} | professor">
+                                <option value="blank"></option>
+                                {% for professor in professors %}
+                                    <option value="{{ professor.id }}">{{ professor.get_full_name }}</option>
+                                {% endfor %}
+                            </select>
+
+                            <select name="{{ time }} | {{ day }} | subject">
+                                <option value="blank"></option>
+                                {% for subject in subjects %}
+                                    <option value="{{ subject.id }}">{{ subject.short_name }}</option>
+                                {% endfor %}
+                            </select>
+
+
+                            <select name="{{ time }} | {{ day }} | room">
+                                <option value="blank"></option>
+                                {% for room in rooms %}
+                                    <option value="{{ room.id }}">Soba: {{ room.room }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+        <input type="submit" name="create_timetable">
+    </div>
+</form>
+{% endblock %}

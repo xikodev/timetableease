@@ -1,0 +1,32 @@
+{% extends 'layout_base.html' %}
+{% block base %}
+<script>
+    putBackBtn('home');
+</script>
+<form method="POST" action="">
+    {% csrf_token %}
+    <div>
+        <h3>Izmjena rasporeda</h3>
+        <fieldset>
+            <legend><label for="class">Odabir razreda</label></legend>
+            <select name="class" id="class" required>
+                <option value="blank"></option>
+                {% for class in classes %}
+                    {% if class.id == selected_class %}
+                        <option value="{{ class.id }}" selected>{{ class.name }}</option>
+                    {% else %}
+                        <option value="{{ class.id }}">{{ class.name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </fieldset>
+    </div>
+    <button type="submit" name="edit_timetable">Odabir razreda</button>
+    <a class="shift" href="{% url 'edit_timetable_select' shift='b'%}">B</a>
+    <a class="shift" href="{% url 'edit_timetable_select' shift='a'%}">A</a>
+    <div>
+        {% block edit %}
+        {% endblock %}
+    </div>
+</form>
+{% endblock %}

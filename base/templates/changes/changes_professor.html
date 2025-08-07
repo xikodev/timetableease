@@ -1,0 +1,21 @@
+{% extends 'layout_base.html' %}
+{% block base %}
+<script>
+    putBackBtn('home');
+</script>
+<form method="POST" action="">
+    {% csrf_token %}
+    <div class="container">
+        <h3>Zahtjev za zamjenu profesora</h3>
+        <fieldset>
+            <legend><label for="start_date">Pocetni datum</label></legend>
+            <input id="start_date" type="date" name="start_date" required>
+        </fieldset>
+        <fieldset>
+            <legend><label for="end_date">Zavrsni datum</label></legend>
+            <input id="end_date" type="date" name="end_date" required>
+        </fieldset>
+        <input type="submit" name="request_change">
+    </div>
+</form>
+{% endblock %}

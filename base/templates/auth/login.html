@@ -1,0 +1,21 @@
+{% extends 'layout_base.html' %}
+{% block base %}
+{% load static %}
+<form method="POST" action="">
+    {% csrf_token %}
+    <div>
+        <img src="{% static 'images/circle-user-solid.png' %}" alt="">
+        <h3>Prijavi se</h3>
+        <fieldset>
+            <legend><label for="email">E-Mail</label></legend>
+            <input id="email" type="email" name="email" required>
+        </fieldset>
+        <fieldset>
+            <legend><label for="password">Lozinka</label></legend>
+            <input id="password" type="password" name="password" required>
+        </fieldset>
+        <input type="submit" name="login_user">
+        <p>Nemaš račun? Stvori ga na <a href="{% url 'register' %}">ovdje</a>.</p>
+    </div>
+</form>
+{% endblock %}

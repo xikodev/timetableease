@@ -1,0 +1,25 @@
+{% extends 'layout_base.html' %}
+{% block base %}
+<script>
+    putBackBtn('settings');
+</script>
+<form method="POST" action="">
+    {% csrf_token %}
+    <div class="container">
+        <h3>Promjena e-mail adrese</h3>
+        <fieldset>
+            <legend><label for="old_email">Stari mail</label></legend>
+            <input id="old_email" type="email" name="old_email" required>
+        </fieldset>
+        <fieldset>
+            <legend><label for="new_email">Novi mail</label></legend>
+            <input id="new_email" type="email" name="new_email" required>
+        </fieldset>
+        <fieldset>
+            <legend><label for="password">Lozinka</label></legend>
+            <input id="password" type="password" name="password" required>
+        </fieldset>
+        <input type="submit" name="change_email">
+    </div>
+</form>
+{% endblock %}

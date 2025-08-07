@@ -1,0 +1,39 @@
+{% extends 'layout_base.html' %}
+{% block base %}
+{% load static %}
+<form method="POST" action="">
+    {% csrf_token %}
+    <div>
+        <img src="{% static 'images/circle-user-solid.png' %}" alt="">
+        <h3>Stvori novi račun</h3>
+        <fieldset>
+            <legend><label for="id_first_name">Ime</label></legend>
+            <input type="text" name="first_name" maxlength="30" id="id_first_name" required>
+        </fieldset>
+        <fieldset>
+            <legend><label for="id_last_name">Prezime</label></legend>
+            <input type="text" name="last_name" maxlength="150" id="id_last_name" required>
+        </fieldset>
+        <fieldset>
+            <legend><label for="id_email">E-mail</label></legend>
+            <input type="email" name="email" maxlength="254" id="id_email" required>
+        </fieldset>
+        <fieldset>
+            <legend><label for="id_password1">Lozinka</label></legend>
+            <input type="password" name="password1" id="id_password1" required>
+        </fieldset>
+        <fieldset>
+            <legend><label for="id_password2">Potvrda lozinke</label></legend>
+            <input type="password" name="password2" id="id_password2" required>
+        </fieldset>
+        <ul>
+            <li>Lozinka ne smije biti slična Vašim osobnim podacima.</li>
+            <li>Lozina mora sadržavati barem 8 znakova.</li>
+            <li>Lozinka ne smije biti često upotrebljena lozinka.</li>
+            <li>Lozinka mora sadržavati barem jedno slovo.</li>
+        </ul>
+        <input type="submit" name="create_user">
+        <p>Imaš račun? Prijavi se <a href="{% url 'login' %}">ovdje</a>.</p>
+    </div>
+</form>
+{% endblock %}
