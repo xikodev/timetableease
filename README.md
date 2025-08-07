@@ -1,5 +1,17 @@
-# School Timetable
+# 📅 Timetable Ease
+Timetable Ease is a modern, web-based application designed for students and teachers of middle and high schools. Accessible from any device with an internet connection, it simplifies the way timetables are viewed, updated, and managed.
 
-The application is called "School Timetable" and can be used on any device with internet connection. It is intended for students and teachers of all middle and high schools, and it will modernize the timetable review and solve many problems such as not being notified of changes in the timetable.
+## ✨ Key Features
+📆 Real-Time Timetable Access – Always up-to-date schedules for students and teachers.
 
-The application is used to display the schedule to all students and teachers. Facilitates the display of schedule changes, which include subject or professor substitutions, and offers professors the ability to submit requests for the same that are approved by the administrator.
+🔔 Instant Change Notifications – Be alerted about substitutions, cancellations, or any other timetable modifications.
+
+🔁 Teacher Substitution Requests – Teachers can easily submit substitution or change requests, which are reviewed and approved by an administrator.
+
+🧑‍💼 Admin Oversight – Centralized approval system to manage timetable changes efficiently.
+
+## 🚀 Why Use Timetable Ease?
+Traditional timetables are often static, unreliable, and prone to communication issues. Timetable Ease solves these problems by:
+- Ensuring everyone is notified of changes in real time
+- Making it easier for staff to manage and approve schedule changes
+- Providing students with a clear, accessible, always-current view of their schedule
