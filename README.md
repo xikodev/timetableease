@@ -1,5 +1,5 @@
 # 📅 Timetable Ease
-Timetable Ease is a modern, web-based application designed for students and teachers of middle and high schools. Accessible from any device with an internet connection, it simplifies the way timetables are viewed, updated, and managed.
+Timetable Ease is a modern, web-based application designed for students and teachers of middle and high schools in Croatia. Accessible from any device with an internet connection, it simplifies the way timetables are viewed, updated, and managed.
 
 ## ✨ Key Features
 📆 Real-Time Timetable Access – Always up-to-date schedules for students and teachers.
